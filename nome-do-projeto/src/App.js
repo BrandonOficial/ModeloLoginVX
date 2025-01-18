@@ -1,33 +1,44 @@
-import React from "react";
-import "./app.css";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import LoginPage from "./components/Login";
+import Dashboard from "./components/Dashboard";
+import './app.css'
 
-export default function App() {
+function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Função simulada para autenticar o usuário
+  const handleLogin = (email, password) => {
+    // Simulação: substitua por uma chamada à API
+    if (email === "admin@example.com" && password === "password123") {
+      setIsAuthenticated(true);
+      return true; // Login bem-sucedido
+    } else {
+      alert("Credenciais inválidas!");
+      return false; // Falha no login
+    }
+  };
+
   return (
-    <div className="container">
-      <div className="login-box">
-        <h1 className="title">Login</h1>
-        <form>
-          <input
-            type="email"
-            placeholder="Digite seu email"
-            className="input"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Digite sua senha"
-            className="input"
-            required
-          />
-          <button type="submit" className="button">
-            Entrar
-          </button>
-        </form>
-        <p className="footer">
-          Não tem uma conta? <a href="#register">Cadastre-se</a>
-        </p>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        {/* Rota de Login */}
+        <Route path="/" element={<LoginPage onLogin={handleLogin} />} />
+
+        {/* Rota Protegida */}
+        <Route
+          path="/nome-do-projeto/src/components/Dashboard.js"
+          element={
+            isAuthenticated ? (
+              <Dashboard />
+            ) : (
+              <Navigate to="/" replace />
+            )
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
+export default App;

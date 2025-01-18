@@ -1,20 +1,25 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-require('dotenv').config();
-
+const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 5000;
+const cors = require("cors");
 
-// Middlewares
-app.use(bodyParser.json());
+app.use(cors());
+app.use(express.json());
 
-// Testando o servidor
-app.get('/', (req, res) => {
-  res.send('API funcionando!');
+const users = [
+  { id: 1, email: "user@example.com", password: "123456" }, // Mock data
+];
+
+app.post("/api/login", (req, res) => {
+  const { email, password } = req.body;
+  const user = users.find((u) => u.email === email && u.password === password);
+
+  if (user) {
+    res.status(200).json({ message: "Login bem-sucedido" });
+  } else {
+    res.status(401).json({ message: "Credenciais inválidas" });
+  }
 });
 
-// Inicia o servidor
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+app.listen(5000, () => {
+  console.log("Servidor rodando em http://localhost:5000");
 });
-
