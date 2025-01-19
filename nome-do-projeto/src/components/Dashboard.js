@@ -1,21 +1,26 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Dashboard.css';
 
 const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    alert('Você saiu do sistema!');
-    navigate('/'); // Redireciona para a página de login
+    // Lógica de logout (se necessário)
+    navigate('/');
   };
 
   return (
     <div className="dashboard-container">
-      <h1>Bem-vindo ao Dashboard!</h1>
-      <p>Você está autenticado e pode acessar suas informações.</p>
-      <button className="logout-button" onClick={handleLogout}>
-        Sair
-      </button>
+      <header className="dashboard-header">
+        <h1>Bem-vindo ao Dashboard!</h1>
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
+      </header>
+      <main className="dashboard-content">
+        <p>Aqui estão suas informações ou funcionalidades disponíveis.</p>
+      </main>
     </div>
   );
 };
