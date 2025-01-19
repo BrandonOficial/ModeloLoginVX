@@ -1,6 +1,6 @@
-# Projeto Nome do Projeto
+# Login AUTH
 
-## Descrição
+## Este projeto é um conteúdo de teste fornecido pela VX. O objetivo do teste é desenvolver um sistema de login utilizando um framework, com funcionalidades de autenticação e integração a um banco de dados.
 
 Este projeto é uma aplicação web que utiliza as seguintes tecnologias:
 
@@ -131,11 +131,8 @@ Para instalar e configurar o Nodemon:
    nodemon server.js
    ```
 
-## Contribuição
-
-Se você deseja contribuir para este projeto, por favor, faça um fork do repositório e envie um pull request.
 
 ## Licença
 
-Este projeto está licenciado sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes. Todos os conteúdos utilizados neste projeto estão licenciados.
 
