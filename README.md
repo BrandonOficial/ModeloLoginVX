@@ -22,31 +22,23 @@ Para instalar e configurar o React:
 Certifique-se de ter o Node.js e o npm (Node Package Manager) instalados em sua máquina.
 
 Execute o seguinte comando para criar uma nova aplicação React:
-
 npx create-react-app nome-do-projeto
 
 Navegue até o diretório do projeto:
-
 cd nome-do-projeto
 
 Inicie o servidor de desenvolvimento:
-
 npm start
 
 2. JavaScript
-
 O JavaScript é uma linguagem de programação que é utilizada tanto no front-end quanto no back-end. Não é necessário instalá-lo separadamente, pois ele é suportado nativamente pelos navegadores e pelo Node.js.
 
 3. Express
-
 Para instalar e configurar o Express:
-
 No diretório do seu projeto Node.js, execute o seguinte comando:
-
 npm install express
 
 Crie um arquivo server.js e adicione o seguinte código básico para iniciar um servidor Express:
-
 const express = require('express');
 const app = express();
 const port = 3000;
