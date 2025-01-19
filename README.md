@@ -1,6 +1,6 @@
 # Login AUTH
 
-## Este projeto é um conteúdo de teste fornecido pela VX. O objetivo do teste é desenvolver um sistema de login utilizando um framework, com funcionalidades de autenticação e integração a um banco de dados.
+### Este projeto é um conteúdo de teste fornecido pela VX. O objetivo do teste é desenvolver um sistema de login utilizando um framework, com funcionalidades de autenticação e integração a um banco de dados.
 
 Este projeto é uma aplicação web que utiliza as seguintes tecnologias:
 
