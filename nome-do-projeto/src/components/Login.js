@@ -1,43 +1,58 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';  // Import do hook useNavigate
 import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();  // Inicialização do hook
 
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (email === 'user@example.com' && password === 'password') {
-      navigate('/dashboard'); // Redireciona para o Dashboard
+
+    const response = await fetch('http://localhost:5000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      // Salvar token no localStorage
+      localStorage.setItem('token', data.token);
+      setMessage('Login bem-sucedido!');
+      // Redirecionar para o Dashboard
+      navigate('/dashboard');  // Navegação para a dashboard
     } else {
-      alert('Credenciais inválidas!');
+      setMessage(data.message);
     }
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <h1>LOGIN</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            placeholder="E-mail"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Senha"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button type="submit">Entrar</button>
-        </form>
-      </div>
+    <div>
+      <h1>Login</h1>
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Senha"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
+      {message && <p>{message}</p>}
     </div>
   );
 };
