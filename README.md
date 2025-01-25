@@ -130,13 +130,6 @@ Para instalar e configurar o Nodemon:
    ```bash
    nodemon server.js
    ```
-
-##iniciar
-- Apos baixar ou clonar o repositorio
-- no arquivo pricnipal use: npm install
-- npm start para o front-end
-- para o "server.js" e "database.js" use node database.js ou run code
-
 ## Licença
 
 Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes. Todos os conteúdos utilizados neste projeto estão licenciados.
