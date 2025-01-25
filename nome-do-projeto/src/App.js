@@ -3,12 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 
-// Componente para proteger rotas
-const ProtectedRoute = ({ element }) => {
-  const token = localStorage.getItem('token'); // Verifica se o token está armazenado
-  return token ? element : <Navigate to="/" />;
-};
-
 const App = () => {
   return (
     <Router>
@@ -20,8 +14,8 @@ const App = () => {
             localStorage.getItem('token') ? <Navigate to="/dashboard" /> : <Login />
           }
         />
-        {/* Rota protegida para o Dashboard */}
-        <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
+        {/* Rota do Dashboard sem proteção */}
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );

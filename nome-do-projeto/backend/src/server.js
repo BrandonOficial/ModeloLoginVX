@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const db = require('./database');  // Configuração do banco SQLite
+const db = require('./database'); // Configuração do banco SQLite
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -11,24 +11,24 @@ const JWT_SECRET = process.env.JWT_SECRET || 'HS202';
 // Middleware para interpretar JSON
 app.use(express.json());
 
-// Middleware para autenticação com JWT
+// Middleware para autenticação com JWT (não será usado na rota de dashboard agora)
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1]; // 'Bearer <token>'
-  console.log('Token:', token); // Adicione esta linha
-  
+  console.log('Token:', token);
+
   if (!token) {
     return res.status(401).json({ message: 'Token não fornecido.' });
   }
-  
+
   jwt.verify(token, JWT_SECRET, (err, user) => {
     if (err) {
-      console.error('Token inválido:', err); // Log para ajudar no debug
+      console.error('Token inválido:', err);
       return res.status(403).json({ message: 'Token inválido.' });
     }
-    
-    req.user = user;  // Armazenar os dados do usuário
-    next();  // Seguir para a próxima etapa (rota protegida)
+
+    req.user = user; // Armazenar os dados do usuário
+    next(); // Seguir para a próxima etapa (rota protegida)
   });
 };
 
@@ -87,7 +87,7 @@ app.post('/login', (req, res) => {
   });
 });
 
-// Rota protegida: Dashboard
+// Rota aberta: Dashboard (sem autenticação)
 app.get('/dashboard', authenticateToken, (req, res) => {
   console.log('Usuário autenticado:', req.user);
   res.json({

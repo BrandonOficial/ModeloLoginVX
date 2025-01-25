@@ -8,13 +8,15 @@ const db = new sqlite3.Database('./auth.db', (err) => {
   }
 });
 
+
 // Criar a tabela de usuários se ela não existir
 db.run(
   `CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    email TEXT UNIQUE NOT NULL,
+    email TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL
-  )`,
+);
+`,
   (err) => {
     if (err) {
       console.error('Erro ao criar a tabela:', err.message);
