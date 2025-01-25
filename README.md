@@ -131,6 +131,11 @@ Para instalar e configurar o Nodemon:
    nodemon server.js
    ```
 
+##iniciar
+- Apos baixar ou clonar o repositorio
+- no arquivo pricnipal use: npm install
+- npm start para o front-end
+- para o "server.js" e "database.js" use node database.js ou run code
 
 ## Licença
 
