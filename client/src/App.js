@@ -93,7 +93,7 @@ function App() {
       ) : (
         <div className="login">
           <form onSubmit={handleSubmit}>
-            <span className="formTitle">Lama Login</span>
+            <span className="formTitle">Login</span>
             <input
               type="text"
               placeholder="username"
